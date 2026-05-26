@@ -6,7 +6,7 @@ on:
       - main
 
 jobs:
-  bikin:
+  build:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout code bro
@@ -45,7 +45,7 @@ jobs:
           path: build/app/outputs/flutter-apk/app-debug.apk
   
   distribution:
-    needs: bikin
+    needs: build
     runs-on: ubuntu-latest
     steps:
       - name: Download APK artifact
