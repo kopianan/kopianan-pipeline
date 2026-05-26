@@ -6,7 +6,7 @@ on:
       - main
 
 jobs:
-  build:
+  bikin:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout code bro
@@ -35,7 +35,7 @@ jobs:
       - name: Get Flutter dependencies
         run: flutter pub get
 
-      - name: Build debug APK
+      - name: bikin debug APK
         run: flutter build apk --debug
 
       - name: Upload APK artifact
@@ -63,4 +63,5 @@ jobs:
             --release-notes="GitHub Actions Build - ${{ github.sha }}" \
             --testers="${{ secrets.FIREBASE_TESTERS }}" \
             --token="${{ secrets.FIREBASE_TOKEN }}"
+
 
