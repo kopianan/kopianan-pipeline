@@ -35,7 +35,7 @@ jobs:
       - name: Get Flutter dependencies
         run: flutter pub get
 
-      - name: bikin debug APK
+      - name: build debug APK
         run: flutter build apk --debug
 
       - name: Upload APK artifact
@@ -45,7 +45,7 @@ jobs:
           path: build/app/outputs/flutter-apk/app-debug.apk
   
   distribution:
-    needs: build
+    needs: bikin
     runs-on: ubuntu-latest
     steps:
       - name: Download APK artifact
