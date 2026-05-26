@@ -3,7 +3,7 @@ name: Build & Distribute
 on:
   push:
     branches:
-      - 'feature/**'
+      - 'release/**'
 
 jobs:
   bikin:
