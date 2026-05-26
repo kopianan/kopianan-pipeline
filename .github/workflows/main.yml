@@ -6,7 +6,7 @@ on:
       - main
 
 jobs:
-  build:
+  bikin:
     runs-on: ubuntu-latest
 
     steps:
@@ -44,3 +44,24 @@ jobs:
         with:
           name: debug-apk
           path: build/app/outputs/flutter-apk/app-debug.apk
+  
+  distribution:
+    needs: bikin
+    runs-on: ubuntu-latest
+    steps:
+      - name: Download APK artifact
+        uses: actions/download-artifact@v4
+        with:
+          name: debug-apk
+
+      - name: Install Firebase CLI
+        run: npm install -g firebase-tools
+
+      - name: Distribute to Firebase App Distribution
+        run: |
+          firebase appdistribution:distribute app-debug.apk \
+            --app="${{ secrets.FIREBASE_APP_ID }}" \
+            --release-notes="GitHub Actions Build - ${{ github.sha }}" \
+            --testers="${{ secrets.FIREBASE_TESTERS }}" \
+            --token="${{ secrets.FIREBASE_TOKEN }}"
+
