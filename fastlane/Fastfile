@@ -4,7 +4,7 @@ platform :android do
     desc "Deploy a new version to the App Distribution"
     lane :build_apk do 
     sh(
-        command: "flutter build appbundle --debug --build-number=#{ENV['BUILD_NUMBER']}",
+        command: "flutter build apk --debug --build-number=#{ENV['BUILD_NUMBER']}",
         log: true
     )
     apk_path = "build/app/outputs/flutter-apk/app-debug.apk"
