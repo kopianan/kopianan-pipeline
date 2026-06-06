@@ -12,7 +12,7 @@ platform :android do
     firebase_app_distribution(
       app: ENV["FIREBASE_APP_ID"],
       android_artifact_path: apk_path,
-      android_artifact_type: "APK",``
+      android_artifact_type: "APK",
       testers: ENV["FIREBASE_TESTERS"],
       service_credentials_json_data: ENV["FIREBASE_SERVICE_ACCOUNT_JSON"]
     )
